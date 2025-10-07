@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flexbox — Demos Didáticas (v2)</title>
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+<div class="wrapper">
+  <h1>🎯 Flexbox — Demos Didáticas Interativas</h1>
+  <p>Aprenda Flexbox de forma prática com exemplos interativos que mostram o código CSS em tempo real. Cada demo inclui controles visuais e exibição do código correspondente para facilitar o aprendizado.</p>
+  
+  <div class="note">
+    <strong>💡 Como usar:</strong> Interaja com os controles em cada demo e observe como o código CSS muda automaticamente. Perfeito para entender como cada propriedade do Flexbox funciona na prática!
+  </div>
+  <div class="hero grid">
+    <figure class="figure">
+      <div class="flexbox-demo" data-direction="row">
+        <div class="demo-container">
+          <div class="demo-title">Eixos do Flexbox — flex-direction: row</div>
+          <div class="demo-subtitle">Container (box-sizing: border-box)</div>
+          <div class="demo-items">
+            <div class="demo-item">Item 1</div>
+            <div class="demo-item">Item 2</div>
+            <div class="demo-item">Item 3</div>
+            <div class="demo-item">Item 4</div>
+            <div class="demo-item">Item 5</div>
+          </div>
+          <div class="axis main-axis">
+            <span class="axis-label">main axis</span>
+            <div class="axis-arrow"></div>
+          </div>
+          <div class="axis cross-axis">
+            <span class="axis-label">cross axis</span>
+            <div class="axis-arrow vertical"></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Eixos com <code>flex-direction: row</code></figcaption>
+    </figure>
+    <figure class="figure">
+      <div class="flexbox-demo" data-direction="column">
+        <div class="demo-container">
+          <div class="demo-title">Eixos do Flexbox — flex-direction: column</div>
+          <div class="demo-subtitle">Container (box-sizing: border-box)</div>
+          <div class="demo-items column">
+            <div class="demo-item">Item 1</div>
+            <div class="demo-item">Item 2</div>
+            <div class="demo-item">Item 3</div>
+            <div class="demo-item">Item 4</div>
+          </div>
+          <div class="axis main-axis vertical">
+            <span class="axis-label">main axis</span>
+            <div class="axis-arrow vertical"></div>
+          </div>
+          <div class="axis cross-axis horizontal">
+            <span class="axis-label">cross axis</span>
+            <div class="axis-arrow"></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Eixos com <code>flex-direction: column</code></figcaption>
+    </figure>
+  </div>
+
+  <h2>📚 Demos Interativas</h2>
+  <div class="grid">
+    <div class="card">
+      <h3><a href="01-direction-justify-align.html">01 — Direção e Alinhamento</a></h3>
+      <p>Aprenda <code>flex-direction</code>, <code>justify-content</code> e <code>align-items</code> com controles interativos.</p>
+    </div>
+    <div class="card">
+      <h3><a href="02-wrap-gap-order.html">02 — Quebra de Linha e Ordem</a></h3>
+      <p>Explore <code>flex-wrap</code>, <code>gap</code> e <code>order</code> para controlar layout e posicionamento.</p>
+    </div>
+    <div class="card">
+      <h3><a href="03-flex-grow-shrink-basis.html">03 — Tamanhos Flexíveis</a></h3>
+      <p>Domine <code>flex-grow</code>, <code>flex-shrink</code> e <code>flex-basis</code> com sliders interativos.</p>
+    </div>
+    <div class="card">
+      <h3><a href="04-navbar.html">04 — Navbar Responsiva</a></h3>
+      <p>Exemplo prático de uma barra de navegação responsiva usando Flexbox.</p>
+    </div>
+    <div class="card">
+      <h3><a href="05-sidebar-content.html">05 — Layout Sidebar + Conteúdo</a></h3>
+      <p>Layout completo com sidebar fixa e área de conteúdo flexível.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

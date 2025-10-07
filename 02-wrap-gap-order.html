@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02 — Quebra de linha e ordem</title>
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+<div class="wrapper">
+  <h1>02 — Quebra de linha e ordem</h1>
+  <div class="card">
+    <div class="controls">
+      <div class="control-group">
+        <label for="wrap">flex-wrap</label>
+        <select id="wrap">
+          <option>nowrap</option>
+          <option selected>wrap</option>
+          <option>wrap-reverse</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="gap">gap: <span id="gap-value">12</span>px</label>
+        <input id="gap" type="range" min="0" max="40" value="12" aria-label="Ajustar espaçamento entre itens">
+      </div>
+      <div class="control-group">
+        <label for="order3">order do item 3</label>
+        <select id="order3">
+          <option value="0">0 (normal)</option>
+          <option value="-1">-1 (antes)</option>
+          <option value="1">1 (depois)</option>
+          <option value="5">5 (fim)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="code-display">
+      <h4>💻 Código CSS Atual:</h4>
+      <pre id="current-css">.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.item:nth-child(3) {
+  order: 0;
+}</pre>
+    </div>
+    <div class="stage">
+      <div id="container" style="display:flex; flex-wrap: wrap; gap: 12px;">
+        <div class="item" style="width:180px;">1</div>
+        <div class="item" style="width:220px;">2</div>
+        <div class="item" id="it3" style="width:160px;">3</div>
+        <div class="item" style="width:200px;">4</div>
+        <div class="item" style="width:180px;">5</div>
+        <div class="item" style="width:220px;">6</div>
+      </div>
+    </div>
+  </div>
+  <p class="small">Com <code>wrap</code>, linhas extras surgem dentro da área azul; <code>order</code> muda só a ordem visual.</p>
+  <p><a href="index.html">← Voltar</a></p>
+</div>
+<script>
+const cont = document.getElementById('container');
+const it3 = document.getElementById('it3');
+const gapValue = document.getElementById('gap-value');
+const currentCSS = document.getElementById('current-css');
+
+function updateCSS() {
+  const wrap = document.getElementById('wrap').value;
+  const gap = document.getElementById('gap').value;
+  const order = document.getElementById('order3').value;
+  
+  const cssCode = `.container {
+  display: flex;
+  flex-wrap: ${wrap};
+  gap: ${gap}px;
+}
+
+.item:nth-child(3) {
+  order: ${order};
+}`;
+  
+  currentCSS.textContent = cssCode;
+}
+
+function update(){
+  const wrap = document.getElementById('wrap').value;
+  const gap = document.getElementById('gap').value;
+  const order = document.getElementById('order3').value;
+  
+  cont.style.flexWrap = wrap;
+  cont.style.gap = gap + 'px';
+  it3.style.order = order;
+  
+  gapValue.textContent = gap;
+  updateCSS();
+}
+
+['wrap','gap','order3'].forEach(id => document.getElementById(id).addEventListener('input', update));
+update();
+</script>
+</body>
+</html>

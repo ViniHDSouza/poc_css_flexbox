@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>05 — Sidebar + Conteúdo</title>
+<link rel="stylesheet" href="common.css">
+<style>
+.layout{ display:flex; gap:16px; }
+.aside{
+  width:260px; flex: 0 0 auto;
+  background:white; border:1px solid #e5e7eb; border-radius:12px; padding:16px;
+}
+.main{
+  flex: 1 1 auto;
+  background:white; border:1px solid #e5e7eb; border-radius:12px; padding:16px;
+}
+.gallery{ display:flex; flex-wrap:wrap; gap:12px; }
+.gallery img{ width:calc(50% - 6px); border-radius:8px; background:#e2e8f0; height:160px; }
+@media (max-width:800px){
+  .layout{ flex-direction:column; }
+  .aside{ width:100%; }
+  .gallery img{ width:100%; }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <h1>05 — Layout com sidebar + conteúdo</h1>
+  <div class="layout">
+    <aside class="aside">
+      <h3>Filtros</h3>
+      <label><input type="checkbox"> Destaques</label><br>
+      <label><input type="checkbox"> Recentes</label><br>
+      <label><input type="checkbox"> Populares</label><br>
+    </aside>
+    <main class="main">
+      <h3>Galeria</h3>
+      <div class="gallery">
+        <img alt="Imagem de exemplo 1 da galeria" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='160'%3E%3Crect width='100%25' height='100%25' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23475569'%3EFoto 1%3C/text%3E%3C/svg%3E">
+        <img alt="Imagem de exemplo 2 da galeria" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='160'%3E%3Crect width='100%25' height='100%25' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23475569'%3EFoto 2%3C/text%3E%3C/svg%3E">
+        <img alt="Imagem de exemplo 3 da galeria" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='160'%3E%3Crect width='100%25' height='100%25' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23475569'%3EFoto 3%3C/text%3E%3C/svg%3E">
+        <img alt="Imagem de exemplo 4 da galeria" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='160'%3E%3Crect width='100%25' height='100%25' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23475569'%3EFoto 4%3C/text%3E%3C/svg%3E">
+      </div>
+    </main>
+  </div>
+  <p class="small">Principal com <code>flex: 1</code> ocupa o restante; no mobile vira coluna.</p>
+  <p><a href="index.html">← Voltar</a></p>
+</div>
+</body>
+</html>

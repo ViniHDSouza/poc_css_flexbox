@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>03 — grow, shrink, basis, flex</title>
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+<div class="wrapper">
+  <h1>03 — Tamanhos flexíveis</h1>
+  <div class="card">
+    <div class="controls">
+      <div class="control-group">
+        <h4>Item 1</h4>
+        <label for="g1">grow: <span id="g1-value">1</span></label>
+        <input id="g1" type="range" min="0" max="5" value="1">
+        <label for="s1">shrink: <span id="s1-value">1</span></label>
+        <input id="s1" type="range" min="0" max="5" value="1">
+        <label for="b1">basis: <span id="b1-value">150</span>px</label>
+        <input id="b1" type="range" min="100" max="300" value="150">
+      </div>
+      <div class="control-group">
+        <h4>Item 2</h4>
+        <label for="g2">grow: <span id="g2-value">2</span></label>
+        <input id="g2" type="range" min="0" max="5" value="2">
+        <label for="s2">shrink: <span id="s2-value">1</span></label>
+        <input id="s2" type="range" min="0" max="5" value="1">
+        <label for="b2">basis: <span id="b2-value">150</span>px</label>
+        <input id="b2" type="range" min="100" max="300" value="150">
+      </div>
+      <div class="control-group">
+        <h4>Item 3</h4>
+        <label for="g3">grow: <span id="g3-value">1</span></label>
+        <input id="g3" type="range" min="0" max="5" value="1">
+        <label for="s3">shrink: <span id="s3-value">1</span></label>
+        <input id="s3" type="range" min="0" max="5" value="1">
+        <label for="b3">basis: <span id="b3-value">150</span>px</label>
+        <input id="b3" type="range" min="100" max="300" value="150">
+      </div>
+    </div>
+
+    <div class="code-display">
+      <h4>💻 Código CSS Atual:</h4>
+      <pre id="current-css">.item:nth-child(1) { flex: 1 1 150px; }
+.item:nth-child(2) { flex: 2 1 150px; }
+.item:nth-child(3) { flex: 1 1 150px; }</pre>
+    </div>
+    <div class="stage">
+      <div id="container" style="display:flex; gap:12px;">
+        <div class="item" id="i1">1</div>
+        <div class="item" id="i2">2</div>
+        <div class="item" id="i3">3</div>
+      </div>
+    </div>
+    <p class="small" id="codes"></p>
+  </div>
+  <p><a href="index.html">← Voltar</a></p>
+</div>
+<script>
+const currentCSS = document.getElementById('current-css');
+
+function apply(id, g, s, b){
+  const el = document.getElementById(id);
+  el.style.flexGrow = g;
+  el.style.flexShrink = s;
+  el.style.flexBasis = b + 'px';
+}
+
+function updateValues() {
+  document.getElementById('g1-value').textContent = document.getElementById('g1').value;
+  document.getElementById('s1-value').textContent = document.getElementById('s1').value;
+  document.getElementById('b1-value').textContent = document.getElementById('b1').value;
+  document.getElementById('g2-value').textContent = document.getElementById('g2').value;
+  document.getElementById('s2-value').textContent = document.getElementById('s2').value;
+  document.getElementById('b2-value').textContent = document.getElementById('b2').value;
+  document.getElementById('g3-value').textContent = document.getElementById('g3').value;
+  document.getElementById('s3-value').textContent = document.getElementById('s3').value;
+  document.getElementById('b3-value').textContent = document.getElementById('b3').value;
+}
+
+function updateCSS() {
+  const g1 = document.getElementById('g1').value;
+  const s1 = document.getElementById('s1').value;
+  const b1 = document.getElementById('b1').value;
+  const g2 = document.getElementById('g2').value;
+  const s2 = document.getElementById('s2').value;
+  const b2 = document.getElementById('b2').value;
+  const g3 = document.getElementById('g3').value;
+  const s3 = document.getElementById('s3').value;
+  const b3 = document.getElementById('b3').value;
+  
+  const cssCode = `.item:nth-child(1) { flex: ${g1} ${s1} ${b1}px; }
+.item:nth-child(2) { flex: ${g2} ${s2} ${b2}px; }
+.item:nth-child(3) { flex: ${g3} ${s3} ${b3}px; }`;
+  
+  currentCSS.textContent = cssCode;
+}
+
+function update(){
+  const g1 = +document.getElementById('g1').value;
+  const s1 = +document.getElementById('s1').value;
+  const b1 = +document.getElementById('b1').value;
+  const g2 = +document.getElementById('g2').value;
+  const s2 = +document.getElementById('s2').value;
+  const b2 = +document.getElementById('b2').value;
+  const g3 = +document.getElementById('g3').value;
+  const s3 = +document.getElementById('s3').value;
+  const b3 = +document.getElementById('b3').value;
+  
+  apply('i1', g1, s1, b1);
+  apply('i2', g2, s2, b2);
+  apply('i3', g3, s3, b3);
+  
+  updateValues();
+  updateCSS();
+}
+
+['g1','s1','b1','g2','s2','b2','g3','s3','b3'].forEach(id => 
+  document.getElementById(id).addEventListener('input', update)
+);
+update();
+</script>
+</body>
+</html>

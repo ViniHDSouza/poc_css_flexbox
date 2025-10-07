@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01 — Direção, alinhamento e distribuição</title>
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+<div class="wrapper">
+  <h1>01 — Direção, alinhamento e distribuição</h1>
+  <p>Sem <code>height</code> fixo: o container se ajusta ao conteúdo. Se faltar espaço na área azul, uma barra de rolagem aparece (overflow controlado).</p>
+  <div class="card">
+    <div class="controls">
+      <div class="control-group">
+        <label for="direction">flex-direction</label>
+        <select id="direction">
+          <option>row</option>
+          <option>row-reverse</option>
+          <option>column</option>
+          <option>column-reverse</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="justify">justify-content</label>
+        <select id="justify">
+          <option>flex-start</option>
+          <option>center</option>
+          <option>flex-end</option>
+          <option>space-between</option>
+          <option>space-around</option>
+          <option>space-evenly</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="align">align-items</label>
+        <select id="align">
+          <option>stretch</option>
+          <option>flex-start</option>
+          <option>center</option>
+          <option>flex-end</option>
+          <option>baseline</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="gap">gap: <span id="gap-value">12</span>px</label>
+        <input id="gap" type="range" min="0" max="48" value="12" aria-label="Ajustar espaçamento entre itens">
+      </div>
+      <div class="control-group">
+        <label><input id="debug" type="checkbox"> Mostrar outlines (debug)</label>
+      </div>
+    </div>
+
+    <div class="code-display">
+      <h4>💻 Código CSS Atual:</h4>
+      <pre id="current-css">.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 12px;
+}</pre>
+    </div>
+
+    <div id="stage" class="stage">
+      <div id="container" style="display:flex; gap:12px; align-items: stretch; justify-content: flex-start; flex-direction: row;">
+        <div class="item">1</div>
+        <div class="item" style="min-height:80px;">2</div>
+        <div class="item" style="min-height:100px;">3</div>
+        <div class="item">4</div>
+        <div class="item" style="min-height:85px;">5</div>
+      </div>
+    </div>
+  </div>
+  <h3>Objetivo</h3>
+  <ol>
+    <li>Troque <code>row</code>/<code>column</code> e observe que <code>justify-content</code> atua no eixo principal.</li>
+    <li>Aumente o <code>gap</code> até aparecer rolagem — nada deve “vazar” da área azul.</li>
+    <li>Teste <code>baseline</code> em <em>row</em> para ver o alinhamento pela linha de base do texto.</li>
+  </ol>
+  <p><a href="index.html">← Voltar</a></p>
+</div>
+<script>
+const cont = document.getElementById('container');
+const stage = document.getElementById('stage');
+const gapValue = document.getElementById('gap-value');
+const currentCSS = document.getElementById('current-css');
+const $ = id => document.getElementById(id);
+
+function updateCSS() {
+  const direction = $('direction').value;
+  const justify = $('justify').value;
+  const align = $('align').value;
+  const gap = $('gap').value;
+  
+  const cssCode = `.container {
+  display: flex;
+  flex-direction: ${direction};
+  justify-content: ${justify};
+  align-items: ${align};
+  gap: ${gap}px;
+}`;
+  
+  currentCSS.textContent = cssCode;
+}
+
+function update(){
+  const direction = $('direction').value;
+  const justify = $('justify').value;
+  const align = $('align').value;
+  const gap = $('gap').value;
+  
+  cont.style.flexDirection = direction;
+  cont.style.justifyContent = justify;
+  cont.style.alignItems = align;
+  cont.style.gap = gap + 'px';
+  
+  gapValue.textContent = gap;
+  stage.classList.toggle('debug', $('debug').checked);
+  
+  updateCSS();
+}
+
+['direction','justify','align','gap','debug'].forEach(id => $(id).addEventListener('input', update));
+update();
+</script>
+</body>
+</html>
